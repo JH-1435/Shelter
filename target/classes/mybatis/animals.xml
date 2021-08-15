@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  namespace 와 id는 Dao에서 쓰임 -->
+<!-- resultType을 쓰는 이유는 mybatis 에서 쓰기 좋게 바꿔주려고 Book 라는 객체를 씀(mybatis에서 Book라는 객체를 
+	만들어줌 => 데이터베이스에서 얻은 값들을 찾아서 item에 주기위해 -->
+	<mapper namespace="animals" >
+	<!-- book_id => 언더바스코어 -->
+	<sql id="search">
+		SELECT * FROM animals
+		<where>
+			<if test="search == 1 and keyword != null">
+				animal_num=#{keyword}
+			</if>
+			
+			<if test="search == 2 and keyword != null">
+				animal_title LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 3 and keyword != null">
+				animal_name LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 4 and keyword != null">
+				animal_sex LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 5 and keyword != null">
+				animal_age LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+		</where>
+	</sql>
+	
+
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM
+		(<include refid="search"></include>) sub
+	</select>
+
+	<!-- LIMIT => mySql 에서 페이저 -->
+	<select id="list" resultType="AnimalsVo" >
+		SELECT * FROM
+		(<include refid="search"></include>) sub
+		ORDER BY animal_num
+		LIMIT #{offset}, #{perPage}
+	</select>
+	
+	<!-- #{}은 필드명, mybatis-config 에서 세팅해주면 이것을 자동으로 고쳐줌(자바표기법:낙타 표기법) -->
+	<!-- animalImg에 null이 들어가는것을 방지하기 위해 if문을 씀 -->
+	<insert id="add">
+		<if test="animalImg == null">
+			INSERT INTO animals
+			(animal_num, animal_name, animal_reg_date, animal_age, animal_state, animal_sex, 
+				animal_location, animal_title, admin_Id)
+			VALUES (NULL, #{animalName}, #{animalRegDate},#{animalAge}, #{animalState}, 
+				#{animalSex}, #{animalLocation}, #{animalTitle}, #{adminId})
+		</if>
+		<if test="animalImg != null">
+			INSERT INTO animals
+			VALUES (NULL, #{animalName}, #{animalRegDate},#{animalAge}, #{animalState}, 
+				#{animalSex}, #{animalImg}, #{animalLocation}, #{animalTitle}, #{adminId})
+		</if>
+	</insert>
+	
+	<update id="update">
+		UPDATE animals 
+		SET animal_name=#{animalName}, animal_reg_date=#{animalRegDate}, 
+		animal_age=#{animalAge}, animal_state=#{animalState}, animal_sex=#{animalSex},
+		animal_location=#{animalLocation}, animal_title=#{animalTitle}, 
+		admin_id=#{adminId}
+		
+		<!-- animalImg가 null이 아닐때만 바꿔라 -->
+		<if test="animalImg != null">
+			, animal_img=#{animalImg}
+		</if>
+		
+		WHERE animal_num=#{animalNum}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM animals
+		WHERE animal_num=#{animalNum}
+	</delete>
+	
+	<select id="item" resultType="AnimalsVo">
+		SELECT * FROM animals
+		WHERE animal_num=#{animalNum}
+	</select>
+	
+</mapper>
+

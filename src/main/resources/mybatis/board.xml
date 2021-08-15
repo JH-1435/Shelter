@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<sql id="search">
+		SELECT * FROM board
+		<where>
+			<if test="search == 1 and keyword != null">
+				board_num=#{keyword}
+			</if>
+			
+			<if test="search == 2 and keyword != null">
+				board_title LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 3 and keyword != null">
+				board_content LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+			
+			<if test="search == 4 and keyword != null">
+				user_id LIKE CONCAT('%', CONCAT(#{keyword},'%'))
+			</if>
+		</where>
+	</sql>
+
+
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM
+			(<include refid="search"></include>) sub
+	</select>
+
+ <!-- 게시판 리스트보기 	-->
+	<select id="list" resultType="BoardVO">
+		SELECT * FROM
+		(<include refid="search"></include>) sub
+		ORDER BY board_num DESC
+		LIMIT #{offset}, #{perPage}
+ 	</select>
+	
+	<!-- 게시물 작성 -->
+	<insert id="add">
+		INSERT INTO board
+		VALUES (NULL, NOW(), #{boardContent}, #{boardTitle}, #{boardReadCount}, NULL, #{userId})
+  		
+		<!--  boardNum 를 item 으로 읽어 와서 OrdersVo 객체에 설정하는 방법을 사용하는 것 -->
+		<selectKey resultType="Integer" keyProperty="boardNum" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="update">
+		UPDATE board
+		SET board_title=#{boardTitle}, board_content=#{boardContent}
+		WHERE board_num=#{boardNum}
+	</update>
+	
+	<!-- 입양예정일 -->
+	<update id="okDate">
+		UPDATE board
+		SET board_okay_date=#{boardOkayDate}
+		WHERE board_num=#{boardNum}
+	</update>
+	
+	<!-- 조회수 +1 -->
+	<update id="boardReadCount" parameterType="int">
+		 UPDATE board 
+		 SET board_read_count = board_read_count + 1 
+		 WHERE board_num =#{boardNum}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		DELETE FROM board
+		WHERE board_num=#{boardNum}
+	</delete>
+		
+	<!--  Map, join -->
+	  	<resultMap type="BoardVo" id="BoardMap"> 
+		<id column="board_num" property="boardNum" />
+		<result column="board_date" property="boardDate" />
+		<result column="board_content" property="boardContent" />
+		<result column="board_title" property="boardTitle" />
+		<result column="board_read_count" property="boardReadCount" />
+		<result column="board_okay_date" property="boardOkayDate" />
+		<result column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+
+		<collection property="orders" column="onm" ofType="OrdersVo" javaType="ArrayList">
+			<id column="orders_num" property="ordersNum" />
+			<result column="board_num" property="boardNum" />
+			<result column="animal_num" property="animalNum" />
+			<result column="user_id" property="userId" />
+			<result column="okay_num" property="okayNum" />
+			<result column="user_name" property="userName" />
+			<result column="user_tel" property="userTel" />
+			<result column="animal_name" property="animalName" />
+			<result column="animal_sex" property="animalSex" />
+			<result column="animal_img" property="animalImg" />
+			<result column="animal_title" property="animalTitle" />
+			<result column="board_okay_date" property="boardOkayDate" />
+		 </collection>   
+	</resultMap>
+	
+	<!-- 게시글 각각의 값(데이터베이스에서 얻은 값들을 찾아서 item에 주기위해) -->
+	  <select id="item" resultMap="BoardMap">
+		SELECT board.*, orders.*, orders.orders_num onm, user.user_name, 
+		user.user_tel, animals.animal_name, animals.animal_sex, animals.animal_img, 
+		animals.animal_title
+		FROM board 
+		JOIN orders ON board.board_num = orders.board_num 
+		JOIN user ON board.user_id = user.user_id 
+		JOIN animals ON orders.animal_num = animals.animal_num
+		WHERE board.board_num=#{boardNum}
+	</select>
+</mapper>

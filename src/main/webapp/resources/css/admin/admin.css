@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+#overflow-hidden-admin {
+	overflow: hidden;
+	min-height: 179px;
+}
+#overflow-hidden-admin02 {
+	overflow: hidden;
+	min-height: 47px;
+}
+#overflow-hidden-admin03 {
+	overflow: hidden;
+	min-height: 103px;
+}
+#overflow-hidden-admin04 {
+	overflow: hidden;
+	min-height: 9px;
+}
+.p-color {
+	color:red;
+	float: left;
+	padding: 5px 0px;
+	margin-left: 10px;
+}
+.board-view02 .photo-box .photo-big 
+#update-p {
+	font-weight: 600;		
+	margin-top: -10px;
+}
+.admin-main-text {
+	width: 100%;
+	margin: 130px 0px 0px -230px;
+}
+.admin-main-text h2 {
+	font-weight: 600;
+	font-size: 20px;
+	margin-top: 10px;
+}
+.admin-main-text ul li:before {
+	content: ">";
+	padding: 0px 5px 6px 0px;
+}

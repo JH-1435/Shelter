@@ -1,0 +1,33 @@
+.nav-color {
+    position: fixed;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #1d2b38;
+    color: white;
+    margin-top: 42px;
+    width: 100%;
+}
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav a:hover {
+    color: rgb(255, 201, 100);
+}
+.logo {
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 21%;
+}
+.nav-list {
+	display: inline-block;
+    padding-right: 21%;
+    white-space:nowrap;
+}
+.nav li {
+    display: inline-block;
+    padding: 0px 40px;
+  
+}

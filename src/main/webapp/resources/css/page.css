@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#page-wrap {
+	width: 100%;
+    overflow: hidden;
+}
+#page-wrap .group-page {
+	width: 100%;
+    margin: 40px auto 0 0;
+    padding: 0;
+    color: #cccccc;
+    font-size: 13px;
+    text-align:center;
+}
+#page-wrap .group-page .page-nation li {
+	display:inline-block;
+}
+#page-wrap .group-page .page-nation a {
+	display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	font-size:13px;
+	color:#999999;
+	text-decoration:none;
+}
+#page-wrap .group-page .page-nation 
+.active a{
+	color: white;
+	background-color: orange;
+}

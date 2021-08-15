@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.view02 table {
+	margin: 30px auto;
+}
+.view02 tr {
+    padding: 10px 0px;	
+}
+.view02 th {
+	border-bottom: 1px solid #e2e2e2;
+	border-top: 0;
+	border-right: 0;
+	font-weight: 600;
+}
+.a-table table .av-1 {
+	text-align: left;
+    padding: 9px 10px;
+}
+.board-view02 {
+	width: 100%;
+}
+.board-view02 .photo-big {
+	position: relative;
+    width: 100%;
+    height: 600px;
+    margin: 25px 0px 25px 0px;
+}
+.photo-box {
+	position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 25px 0 25px 0;
+}
+.photo-box .photo-big {
+	position: absolute;
+    top: 0px;
+    margin: 0 0 0 100px;
+    width: 600px;
+    height: auto;
+    min-height: 600px;
+}
+.photo-big ul {
+	position: absolute;
+    left: 50px;
+    top: 0px;
+    border: 1px solid #cdcdcd
+}
+.photo-big ul li {
+	float: left;
+	margin: 0px;
+    padding: 0px;
+    text-align: center;
+	
+}  
+.photo-big ul li .photo-img {
+	display: block;
+    width: 400px;
+    max-width: 100%;
+    height: 600px;
+    max-height: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+.a-table .view02 th {
+    background: none;
+    border-bottom: 1px solid #e2e2e2;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    font-weight: 600;
+}
+.a-table table td {
+	border: 1px solid #e2e2e2;
+    border-top: 0px;
+    border-right: 0px;
+    padding: 9px 0px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 13px;
+}

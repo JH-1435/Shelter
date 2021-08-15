@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.sign-wrap {
+	width: 100%;
+	min-height: 780px;
+}
+.signup-list ul li {
+	position: relative;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+.signup-list ul li button {
+	float: right;
+	margin-top: -45px;
+	width: 25%;
+	height: 45px;
+	font-size: 16px;
+	
+}
+.signup-list ul li input {
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	padding-top: 3px;
+	
+	height: 45px;
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #d9d9d9;
+    width: 70%;
+}
+#signup02 .signup-btn {
+	text-align: center;
+	display: inline-block;
+	margin-top: 20px;
+	padding: 15px 220px;
+	font-size: 15px;
+	font-weight: 600;
+}

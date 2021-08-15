@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="kr.ac.kopo.shelter.model.AdminVo" alias="AdminVo"/>
+		<typeAlias type="kr.ac.kopo.shelter.model.UserVo" alias="UserVo"/>
+		<typeAlias type="kr.ac.kopo.shelter.model.AnimalsVo" alias="AnimalsVo"/>
+		<typeAlias type="kr.ac.kopo.shelter.model.BoardVo" alias="BoardVo"/>
+		<typeAlias type="kr.ac.kopo.shelter.model.OrdersVo" alias="OrdersVo"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mybatis/admin.xml"/>
+		<mapper resource="mybatis/user.xml"/>
+		<mapper resource="mybatis/animals.xml"/>
+		<mapper resource="mybatis/board.xml"/>
+		<mapper resource="mybatis/orders.xml"/>
+	</mappers>
+	
+</configuration>

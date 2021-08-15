@@ -1,0 +1,87 @@
+#banner-wrap {
+	height: 150px;
+	margin: 122px auto 0;
+}
+.banner {
+    height: 150px;
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+#container-wrap {
+	width: 100%;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#container-wrap .contents-layout {
+	margin: 0px auto;
+    width: auto;
+    height: auto;
+}
+.left-wrap {
+	float: left;
+    width: 205px;
+    margin-left: 430px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    padding: 0;
+}
+.left-wrap h2 {
+    padding: 50px 0 6px 5px;    
+ 	font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 10px;
+    color: green;
+}
+.left-wrap h2 span {
+    padding: 0;
+	display: block;
+	font-size: 14px;
+	font-weight: normal;
+	color: #cccccc;
+}
+.animals-list-nav {
+    margin-bottom: 50px;
+    width: 100%;
+    border-top: 1px solid #e6e6e6;
+}
+.animals-list-nav li {
+	border-bottom: 1px solid #e6e6e6;
+}
+.animals-list-nav li a.on {
+    color: white;
+    background-color: goldenrod;
+    padding: 10px 10px;
+    display: block;
+    color: white;
+    font-weight: 600;
+}
+.animals-list-nav li a.on:hover {
+	color: white;
+}
+.animals-list-nav li a {
+	color: #505050;
+	font-weight: 600;
+    padding: 10px 10px;
+    display: block;
+}
+.animals-list-nav li a:hover {
+	color: gold;
+}
+.search {
+	display: block;
+    padding: 10px 5px 10px 50px;
+    margin: 40px auto;
+    font-size: 13px;
+    border: 2px solid #cdcdcd;
+}
+.search .button {
+	background-color: #3A3A3A;
+	color: white;
+}
+.clear {
+	clear: both;	
+}

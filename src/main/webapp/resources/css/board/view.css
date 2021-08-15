@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.a-table {
+	width: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    font-size: 13px;
+}
+.view td div.left {
+    margin: 20px 0 0 0;
+}
+.overflow-hidden-view {
+	margin-top: 30px;
+}

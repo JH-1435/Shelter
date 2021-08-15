@@ -1,0 +1,39 @@
+#header-wrap {
+	width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 101;
+}
+.status-bar {
+    position: fixed;
+    background-color: white;
+    font-size: 14px;
+    padding: 14px 1270px;
+    font-weight: 600;
+    width: 5000px;
+}
+.status-bar a {
+    padding: 0px 10px;
+}
+.status-bar a:hover {
+    border-bottom: 2px solid #1d2b38;
+}
+.status-bar #login-admin {
+	float: left;
+}
+.status-bar #login-admin a {
+	margin-left: -1000px;
+	color: white;
+}
+.status-bar #login-admin a:hover {
+	border: 2px solid #1d2b38;
+	color: black;
+}
+
+.status-bar #login-admin02 {
+    margin-left: -185px;
+    margin-right: 30px;
+   	border: 2px solid #1d2b38;
+	background-color: black;
+	color: white;
+}

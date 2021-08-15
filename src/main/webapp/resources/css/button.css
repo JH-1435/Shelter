@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.btn-group {
+	float: right;
+    margin-top: 10px;
+}
+.btn-group a {
+	float: left;
+    display: block;
+    padding: 8px 20px 8px 20px;
+    text-align: center;
+    margin-left: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #333333;
+    font-weight: 600;
+    background-color: #5c5c5c;
+}
+.btn-group i {
+	margin-right: 5px;
+}

@@ -1,0 +1,27 @@
+#footer-wrap {
+	width: 100%;
+    margin-top: 50px;
+    position: relative;
+    bottom: 0;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 120px;
+    background: #141d26;
+}
+.footer p {
+    color: #bebebe;
+    padding-left: 300px;
+    padding-top: 20px;
+    font-size: 14px;
+}
+.footer img {
+    padding-top: 10px;
+    padding-right: 240px;
+}
+#overflow-hidden-update {
+	overflow: hidden;
+	min-height: 1px; 
+}
